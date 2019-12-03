@@ -1,0 +1,51 @@
+'''
+Created on Dec 3, 2019
+
+@author: NITS
+npm install selenium 
+
+whitehat
+DAST
+
+'''
+#import module or library 
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+
+def open():
+    
+    print('hi')
+    driver = webdriver.Chrome()
+    driver.implicitly_wait(30)
+    driver.maximize_window()
+    driver.get("https://www.google.com")
+
+    #find element and search data
+    selement = driver.find_element_by_name("q")
+    selement.clear()
+    selement.send_keys("selenium jar download")
+    selement.submit()
+    driver.implicitly_wait(30)
+    
+    el = driver.find_elements_by_class_name("S3Uucc")
+    
+    print(type(el))
+    print("no of elements ", len(el))
+    
+    
+    i=0 
+    for li in el:
+        print(li.get_attribute("innerHTML"))
+        
+        i=i+1
+        if i>10:
+            break 
+        
+    
+
+    driver.quit()
+
+if __name__ == '__main__':
+    open()
+    
+    
